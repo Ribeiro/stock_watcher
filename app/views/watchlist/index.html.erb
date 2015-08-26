@@ -10,11 +10,26 @@
     There was a problem with the Yahoo Finance API. Please try again later.
   </div>
 
-  <ul>
-    <li ng-repeat="stock in stocks">
-      {{stock.symbol}}, {{stock.name}}, {{stock.bid}}, {{stock.ask}}, {{stock.year_low}}, {{stock.year_high}}
-      <a href='' ng-click="deleteStock(stock.id, $index)">Delete</a>
-    </li>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+         <th>Symbol</th>
+         <th>Name</th>
+         <th>Bid</th>
+         <th>Ask</th>
+         <th>Year Low</th>
+         <th>Year High</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="stock in stocks">
+      <td>{{stock.symbol}}</td>
+      <td>{{stock.name}}</td>
+      <td>{{stock.bid}}</td>
+      <td>{{stock.ask}}</td>
+      <td>{{stock.year_low}}</td>
+      <td>{{stock.year_high}}</td>
+      <td><a href='' ng-click="deleteStock(stock.id, $index)">Delete</a></td>
+  </tr>
+  </table
   
 </div>
