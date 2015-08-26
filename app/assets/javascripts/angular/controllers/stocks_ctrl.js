@@ -6,7 +6,7 @@ app.controller('StocksCtrl', ['$scope', 'Stock', '$filter', '$http', function($s
     var attr = {};
     attr.symbol = $filter('uppercase')($scope.newSymbol);
     $http({method: 'GET', url: "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20WHERE%20symbol%3D" + "'" + attr.symbol + "'" + "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
-      
+
 }).success(function(data, status, headers, config) {
      $scope.error = false;
      attr.name = data.query.results.quote["Name"];
@@ -17,13 +17,16 @@ app.controller('StocksCtrl', ['$scope', 'Stock', '$filter', '$http', function($s
      var newStock = Stock.create(attr);
      $scope.stocks.push(newStock);
      $scope.newSymbol = "";
+     toastr.success(attr.name+' Successfully added!');
 }).error(function(data, status, headers, config) {
      $scope.error = true;
+     toastr.error('Oops... something went wrong!!!');
 });
   };
   
   $scope.deleteStock = function(id, idx) {
     Stock.delete(id);
+    toastr.success('Stock successfully removed!');
     $scope.stocks.splice(idx, 1);
   };
 }]);

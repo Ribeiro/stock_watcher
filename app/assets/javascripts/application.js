@@ -16,4 +16,7 @@
 //= require angular-resource
 //= require main.js
 //= require_tree ./angular
+//= require jquery
+//= require jquery_ujs
+//= require toastr
 //= require_tree .
